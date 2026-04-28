@@ -24,13 +24,6 @@ public_users.post("/register", (req, res) => {
   }
 });
 
-// // Get the book list available in the shop
-// public_users.get('/', function (req, res) {
-//   // Convert the books object into a JSON string
-//   const booksString = JSON.stringify(books); // pretty-print with 2 spaces
-//   return res.status(200).send(booksString);
-// });
-
 const axios = require("axios");
 
 public_users.get("/booksdb", (req, res) => {
@@ -47,20 +40,6 @@ public_users.get("/", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch books" });
   }
 });
-
-// Get book details based on ISBN
-// public_users.get('/isbn/:isbn', function (req, res) {
-//   const isbn = req.params.isbn; // get ISBN from URL
-//   const book = books[isbn];     // look up book by key
-
-//   if (book) {
-//     // Found the book
-//     return res.status(200).json(book);
-//   } else {
-//     // ISBN not found
-//     return res.status(404).json({ message: "Book not found" });
-//   }
-// });
 
 public_users.get("/isbn/:isbn", async (req, res) => {
   const isbn = req.params.isbn;
@@ -79,20 +58,6 @@ public_users.get("/isbn/:isbn", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch book" });
   }
 });
-  
-// Get book details based on author
-// public_users.get('/author/:author', function (req, res) {
-//   const author = req.params.author;
-//   const matchingBooks = Object.values(books).filter(
-//     (book) => book.author.toLowerCase() === author.toLowerCase()
-//   );
-
-//   if (matchingBooks.length > 0) {
-//     return res.status(200).json(matchingBooks);
-//   } else {
-//     return res.status(404).json({ message: "No books found for this author" });
-//   }
-// });
 
 public_users.get("/author/:author", async (req, res) => {
   const author = req.params.author;
@@ -113,20 +78,6 @@ public_users.get("/author/:author", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch books" });
   }
 });
-
-// Get all books based on title
-// public_users.get('/title/:title', function (req, res) {
-//   const title = req.params.title;
-//   const matchingBooks = Object.values(books).filter(
-//     (book) => book.title.toLowerCase() === title.toLowerCase()
-//   );
-
-//   if (matchingBooks.length > 0) {
-//     return res.status(200).json(matchingBooks);
-//   } else {
-//     return res.status(404).json({ message: "No books found with this title" });
-//   }
-// });
 
 public_users.get("/title/:title", async (req, res) => {
   const title = req.params.title;
